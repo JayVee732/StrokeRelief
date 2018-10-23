@@ -13,13 +13,20 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-  <button ion-button (click)="Scan()">Search for new devices</button>
   <ion-list-header>
     Paired Devices
   </ion-list-header>
   <ion-item *ngFor="let device of pairedDevices">
     {{device.name}}
   </ion-item>
+  <ion-list-header>
+    Availlable Devices
+  </ion-list-header>
+  <ion-item *ngFor='let device of unpairedDevices'>
+    <span (click)="selectDevice(device.address)">
+      {{device.name}}
+    </span>
+  </ion-item>
+  <ion-spinner name="crescent" *ngIf="gettingDevices"></ion-spinner>
 </ion-content>

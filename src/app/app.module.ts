@@ -4,9 +4,11 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { BluetoothConnectPage } from '../pages/bluetooth-connect/bluetooth-connect';
 import { SettingsPage } from '../pages/settings/settings';
+import { HelpPage } from '../pages/help/help';
+import { ExercisePage } from '../pages/exercise/exercise';
+import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,9 +19,11 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     BluetoothConnectPage,
     SettingsPage,
+    TabsPage,
+    HelpPage,
+    ExercisePage,
   ],
   imports: [
     BrowserModule,
@@ -29,9 +33,11 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     BluetoothConnectPage,
     SettingsPage,
+    TabsPage,
+    HelpPage,
+    ExercisePage,
   ],
   providers: [
     StatusBar,
