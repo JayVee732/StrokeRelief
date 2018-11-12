@@ -8,12 +8,9 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  constructor(private router: Router, private afa: AngularFireAuth) {
-
-  }
+  constructor(private router: Router, private afa: AngularFireAuth) {  }
 
   createNewUserWithEmailAndPassword(email: string, password: string) {
-
     this.afa.auth.createUserWithEmailAndPassword(email, password)
       .then(
         (success) => {
@@ -25,5 +22,19 @@ export class AuthService {
           console.log(err);
         }
       )
+  }
+
+  loginUserWithEmailAndPassword(email: string, password: string) {
+    this.afa.auth.signInWithEmailAndPassword(email, password)
+    .then(
+      (success) => {
+        console.log(success);
+        this.router.navigate(['/user'])
+      })
+    .catch(
+      (err) => {
+        console.log(err);
+      }
+    )
   }
 }
