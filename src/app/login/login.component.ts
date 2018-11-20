@@ -10,15 +10,14 @@ export class LoginComponent implements OnInit {
   state: string = '';
   error: any;
 
-  constructor(private authService: AuthService) { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
   }
 
   onSubmit(formData) {
     if (formData.valid) {
-      console.log(formData.value);
-      this.authService.loginUserWithEmailAndPassword(formData.value.email, formData.value.password);
+      this.auth.loginUserWithEmailAndPassword(formData.value.email, formData.value.password);
     }
   }
 }

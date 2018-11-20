@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-user',
@@ -6,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  public userInfo: string;
 
-  constructor() { }
+  constructor(private auth: AuthService, private storage: StorageService) { }
 
   ngOnInit() {
+    this.storage.getUserInfo().subscribe((res) => {
+      this.userInfo = res;
+    });
   }
 
+  logOut() {
+    this.auth.logOut();
+  }  
 }

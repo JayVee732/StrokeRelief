@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -22,6 +23,8 @@ const routes: Routes = [
   { path: 'user', component: UserComponent },
 ];
 
+export const firebaseConfig = environment.firebase;
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +34,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
