@@ -15,31 +15,30 @@ export class StorageService {
   private firebaseURL: string = environment.firebase.databaseURL;
   private uid: string = '';
 
-  constructor(private router: Router, private http: HttpClient, private afa: AngularFireAuth, private db: AngularFirestore) {
+  constructor(private http: HttpClient, private afa: AngularFireAuth, private db: AngularFirestore) {
     this.getUID();
   }
 
   //Post new user to the database
-  sendPostRequestNewUser(postData: any, user: string) {
+  sendPostRequestNewUser(userData: any) {
     this.db.collection('users').add({
-      postData
+      userData
     });
-    this.router.navigate(['../user']);
   }
 
   // Get user information
   getUserInfo(): Observable<any> {
-    return this.http.get(this.firebaseURL + 'users/' + this.uid + '.json');
+    return this.http.get(this.firebaseURL + '/users/' + this.uid + '.json');
   }
 
   getUID() {
     this.afa.authState.subscribe((resp) => {
-        if (resp != null) {
-            //As long as it is a vaild user ID
-            if (resp.uid) {
-                this.uid = resp.uid;
-            }
+      if (resp != null) {
+        //As long as it is a vaild user ID
+        if (resp.uid) {
+          this.uid = resp.uid;
         }
+      }
     });
-}
+  }
 }

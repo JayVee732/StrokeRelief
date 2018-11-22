@@ -7,6 +7,12 @@
   <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
     <input type="text" placeholder="Email Address" (ngModel)="email" name="email" class="txt" required>
     <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required>
+    <input type="text" placeholder="First Name" (ngModel)="firstName" name="firstName" class="txt" required>
+    <input type="text" placeholder="Surname" (ngModel)="surname" name="surname" class="txt">
+    <input type="text" placeholder="Address Line 1" (ngModel)="addressLine1" name="addressLine1" class="txt" required>
+    <input type="text" placeholder="Address Line 2" (ngModel)="addressLine2" name="addressLine2" class="txt" required>
+    <input type="text" placeholder="County" (ngModel)="county" name="county" class="txt" required>
+    <input type="text" placeholder="Phone Number" (ngModel)="phoneNumber" name="phoneNumber" class="txt" required>
 
     <button type="submit" [disabled]="!formData.valid" class="basic-btn">Create My Account</button>
   </form>

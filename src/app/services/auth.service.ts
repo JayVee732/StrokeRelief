@@ -18,22 +18,30 @@ export class AuthService {
     this.currentUser = afa.authState;
   }
 
-  populatePost(uid, email) {
-    this.post ={
+  createClientLogin(firstName, surname, addressLine1, AddressLine2, county, uid, email, phoneNumber) {
+    this.post = {
+      "FirstName": firstName,
+      "Surname": surname,
+      "AddressLine1": addressLine1,
+      "AddressLine2": AddressLine2,
+      "County": county,
+      "PhoneNumber": phoneNumber,
       "UserID": uid,
-      "Email": email
+      "Email": email,
+      "UserRole": "Client"
     };
     return this.post;
   }
 
-  createNewUserWithEmailAndPassword(email: string, password: string) {
+  createNewUserWithEmailAndPassword(email: string, password: string, firstName: string, surname: string, addressLine1: string, addressLine2: string, county: string, phoneNumber: string) {
     this.afa.auth.createUserWithEmailAndPassword(email, password)
       .then(
         (success) => {
           this.afa.authState.subscribe((resp) => {
             if (resp != null) {
               if (resp.uid) {
-                this.storage.sendPostRequestNewUser(this.populatePost(resp.uid, email), resp.uid);
+                // Look into why this returns false HTTP 401
+                this.storage.sendPostRequestNewUser(this.createClientLogin(firstName, surname, addressLine1, addressLine2, county, resp.uid, email, phoneNumber));
               }
             }
           })
@@ -43,6 +51,7 @@ export class AuthService {
       .catch(
         (err) => {
           console.log(err);
+          this.router.navigate(['/login'])
         }
       )
   }
@@ -52,7 +61,7 @@ export class AuthService {
       .then(
         (success) => {
           console.log(success);
-          this.router.navigate(['/user'])
+          this.router.navigate(['/home'])
         })
       .catch(
         (err) => {
@@ -67,7 +76,7 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    if (this.currentUser == null){
+    if (this.currentUser == null) {
       console.log(this.currentUser);
       return false;
     }

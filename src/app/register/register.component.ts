@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   onSubmit(formData) {
     if (formData.valid) {
       console.log(formData.value);
-      this.authService.createNewUserWithEmailAndPassword(formData.value.email, formData.value.password);
+      this.authService.createNewUserWithEmailAndPassword(formData.value.email, formData.value.password, formData.value.firstName,formData.value.surname,formData.value.addressLine1, formData.value.addressLine2, formData.value.county, formData.value.phoneNumber);
     }
   }
 }

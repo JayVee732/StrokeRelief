@@ -15,12 +15,16 @@ import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { TopnavComponent } from './topnav/topnav.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'user', component: UserComponent },
+  { path: 'home', component: HomeComponent },
 ];
 
 export const firebaseConfig = environment.firebase;
@@ -31,6 +35,9 @@ export const firebaseConfig = environment.firebase;
     LoginComponent,
     RegisterComponent,
     UserComponent,
+    SidenavComponent,
+    TopnavComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
