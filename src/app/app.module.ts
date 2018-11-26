@@ -14,6 +14,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
+import { IonicStorageModule } from '@ionic/storage';
+import { SettingsProvider } from '../providers/settings/settings';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
   ],
   imports: [
     BrowserModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -43,7 +46,9 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
     StatusBar,
     SplashScreen,
     BluetoothSerial,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    IonicStorageModule,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SettingsProvider
   ]
 })
 export class AppModule {}

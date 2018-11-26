@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { SettingsPage } from '../settings/settings';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-home',
@@ -9,13 +10,26 @@ import { SettingsPage } from '../settings/settings';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController, public storage: Storage) {
   }
 
-  toggleSettings(event, item) {
+  toggleSettings(item) {
     this.navCtrl.push(SettingsPage, {
       item: item
     });
+  }
+
+  getName() {
+    this.storage.ready().then(() => {
+      this.storage.get('name').then((name) => {
+        alert("Hey " + name + "!");
+      });
+    })
+  }
+
+  setName() {
+    this.storage.ready().then(() => {
+      this.storage.set('name', 'Jamie');
+    })
   }
 }
