@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { SettingsProvider } from '../providers/settings/settings';
+import { AuthProvider } from '../providers/auth/auth';
+import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,9 +14,9 @@ import { SettingsProvider } from '../providers/settings/settings';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = TabsPage;
+  rootPage: any = LoginPage;
   selectedTheme: String;
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private settings: SettingsProvider) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private settings: SettingsProvider, private auth: AuthProvider) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -22,5 +24,9 @@ export class MyApp {
       splashScreen.hide();
       this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);
     });
+  }
+
+  public setTabs() {
+    this.rootPage = TabsPage;
   }
 }
