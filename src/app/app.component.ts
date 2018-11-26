@@ -18,6 +18,20 @@ export class MyApp {
   selectedTheme: String;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private settings: SettingsProvider, private auth: AuthProvider) {
     platform.ready().then(() => {
+      this.auth.afAuth.authState
+        .subscribe(
+          user => {
+            if (user) {
+              this.rootPage = TabsPage;
+            } else {
+              this.rootPage = LoginPage;
+            }
+          },
+          () => {
+            this.rootPage = LoginPage;
+          }
+        );
+
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();

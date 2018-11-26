@@ -4,6 +4,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HomePage } from '../home/home';
 import { AuthProvider } from '../../providers/auth/auth';
+import { TabsPage } from '../tabs/tabs';
 
 /**
  * Generated class for the LoginPage page.
@@ -41,7 +42,7 @@ export class LoginPage {
     };
     this.auth.signInWithEmail(credentials)
       .then(
-        () => this.navCtrl.setRoot(HomePage),
+        () => this.navCtrl.setRoot(TabsPage),
         error => this.loginError = error.message
       );
   }

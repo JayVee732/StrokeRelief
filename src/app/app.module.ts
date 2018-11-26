@@ -21,6 +21,7 @@ import { AuthProvider } from '../providers/auth/auth';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 
@@ -62,6 +63,7 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
     SettingsProvider,
     AngularFireAuth,
     AuthProvider,
+    AngularFirestore,
   ]
 })
 export class AppModule {}

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SettingsProvider } from '../../providers/settings/settings';
+import { AuthProvider } from '../../providers/auth/auth';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the SettingsPage page.
@@ -17,7 +19,7 @@ import { SettingsProvider } from '../../providers/settings/settings';
 export class SettingsPage {
 
   selectedTheme: String;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private settings: SettingsProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private settings: SettingsProvider, private auth: AuthProvider) {
     this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);
   }
 
@@ -28,5 +30,10 @@ export class SettingsPage {
     else {
       this.settings.setActiveTheme("ionic.theme.dark");
     }
+  }
+
+  logout() {
+    this.auth.signOut();
+    this.navCtrl.setRoot(LoginPage);
   }
 }

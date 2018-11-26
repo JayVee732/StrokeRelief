@@ -12,4 +12,6 @@
 
 <ion-content padding>
   <button ion-button (click)="toggleTheme()">Change Theme</button>
+
+  <button ion-button (click)="logout()" *ngIf="auth.authenticated">Log Out</button>
 </ion-content>
