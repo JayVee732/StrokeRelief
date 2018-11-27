@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { StorageService } from './storage.service';
+import { Form } from '../form';
 
 @Injectable({
   providedIn: 'root'
@@ -33,15 +34,16 @@ export class AuthService {
     return this.post;
   }
 
-  createNewUserWithEmailAndPassword(email: string, password: string, firstName: string, surname: string, addressLine1: string, addressLine2: string, county: string, phoneNumber: string) {
-    this.afa.auth.createUserWithEmailAndPassword(email, password)
+  createNewUserWithEmailAndPassword(form: Form) {
+    console.log(form);
+    this.afa.auth.createUserWithEmailAndPassword(form.email, form.password)
       .then(
         (success) => {
           this.afa.authState.subscribe((resp) => {
             if (resp != null) {
               if (resp.uid) {
                 // Look into why this returns false HTTP 401
-                this.storage.sendPostRequestNewUser(this.createClientLogin(firstName, surname, addressLine1, addressLine2, county, resp.uid, email, phoneNumber));
+                this.storage.sendPostRequestNewUser(this.createClientLogin(form.firstName, form.surname, form.addressLine1, form.addressLine2, form.county, resp.uid, form.email, form.phoneNumber));
               }
             }
           })

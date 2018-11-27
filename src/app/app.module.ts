@@ -18,6 +18,7 @@ import { AuthService } from './services/auth.service';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { HomeComponent } from './home/home.component';
+import { ClientComponent } from './client/client.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -38,6 +39,7 @@ export const firebaseConfig = environment.firebase;
     SidenavComponent,
     TopnavComponent,
     HomeComponent,
+    ClientComponent,
   ],
   imports: [
     BrowserModule,

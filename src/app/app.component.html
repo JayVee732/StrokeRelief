@@ -1,8 +1,12 @@
 <app-topnav></app-topnav>
 
-<div class="row-offcanvas row-offcanvas-left">
-  <app-sidenav></app-sidenav>
-  <div class="col-md-12">
-    <router-outlet></router-outlet>
+<div class="container-fluid">
+  <div class="row row-offcanvas row-offcanvas-left active">
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+      <app-sidenav></app-sidenav>
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
