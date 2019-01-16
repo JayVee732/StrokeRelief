@@ -1,3 +1,7 @@
-<p>
-  client works!
-</p>
+<h2>Client List</h2>
+
+<ul *ngFor="let user of users">
+  <li>
+    {{ user.FirstName }} {{ user.Surname }}
+  </li>
+</ul>

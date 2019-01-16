@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth } from "@angular/fire/auth";
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -19,7 +19,7 @@ export class AuthService {
     this.currentUser = afa.authState;
   }
 
-  createClientLogin(firstName, surname, addressLine1, AddressLine2, county, uid, email, phoneNumber) {
+  /*createClientLogin(firstName, surname, addressLine1, AddressLine2, county, uid, email, phoneNumber) {
     this.post = {
       "FirstName": firstName,
       "Surname": surname,
@@ -32,7 +32,7 @@ export class AuthService {
       "UserRole": "Client"
     };
     return this.post;
-  }
+  }*/
 
   createNewUserWithEmailAndPassword(form: Form) {
     console.log(form);
@@ -43,7 +43,7 @@ export class AuthService {
             if (resp != null) {
               if (resp.uid) {
                 // Look into why this returns false HTTP 401
-                this.storage.sendPostRequestNewUser(this.createClientLogin(form.firstName, form.surname, form.addressLine1, form.addressLine2, form.county, resp.uid, form.email, form.phoneNumber));
+                this.storage.sendPostRequestNewUser(form.firstName, form.surname, form.addressLine1, form.addressLine2, form.county, resp.uid, form.email, form.phoneNumber);
               }
             }
           })

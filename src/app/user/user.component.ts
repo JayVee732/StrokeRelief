@@ -14,9 +14,6 @@ export class UserComponent implements OnInit {
   constructor(private auth: AuthService, private storage: StorageService) { }
 
   ngOnInit() {
-    this.storage.getUserInfo().subscribe((res) => {
-      this.userInfo = res;
-    });
   }
 
   logOut() {
