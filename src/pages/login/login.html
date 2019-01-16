@@ -14,35 +14,28 @@
 
 
 <ion-content>
-	<form (ngSubmit)="login()" [formGroup]="loginForm">
+	<!--<form (ngSubmit)="login()">
 		<ion-list inset>
-
-			<ion-item [ngClass]="{ invalid: emailErrors.hasError('*', ['touched', 'dirty']) }">
-				<ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
-			</ion-item>
-
-			<div ngxErrors="email" #emailErrors="ngxErrors">
-				<div [ngxError]="['email', 'required']" [when]="['touched', 'dirty']">It should be a valid email</div>
-			</div>
-
-			<ion-item [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }">
-				<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-			</ion-item>
-
-			<div ngxErrors="password" #passwordErrors="ngxErrors">
-				<div [ngxError]="['minlength', 'required']" [when]="['touched']">It should be at least 5 characters</div>
-			</div>
+			<ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+			<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
 		</ion-list>
 
 		<div padding-horizontal>
-			<div class="form-error">{{loginError}}</div>
 
-			<button ion-button full type="submit" [disabled]="!loginForm.valid">Log in</button>
+			<button ion-button full type="submit">Log in</button>
 			<div class="login-footer">
 				<p>
 					<a href="#">Forgot password?</a>
 				</p>
 			</div>
+		</div>
+	</form>-->
+	<form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+		<ion-input type="text" placeholder="Email Address" (ngModel)="email" name="email" class="txt" required></ion-input>
+		<ion-input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required></ion-input>
+
+		<div padding-horizontal>
+			<button ion-button full type="submit">Log in</button>
 		</div>
 	</form>
 </ion-content>

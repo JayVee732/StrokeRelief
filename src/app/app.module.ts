@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
-import { MyApp } from './app.component';
+import { StrokeReliefApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { BluetoothConnectPage } from '../pages/bluetooth-connect/bluetooth-connect';
 import { SettingsPage } from '../pages/settings/settings';
@@ -19,15 +19,15 @@ import { IonicStorageModule } from '@ionic/storage';
 import { SettingsProvider } from '../providers/settings/settings';
 import { AuthProvider } from '../providers/auth/auth';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from '../environments/environment';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 
 @NgModule({
   declarations: [
-    MyApp,
+    StrokeReliefApp,
     HomePage,
     BluetoothConnectPage,
     SettingsPage,
@@ -39,13 +39,15 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
   imports: [
     BrowserModule,
     IonicStorageModule.forRoot(),
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(StrokeReliefApp),
     AngularFireModule.initializeApp(environment.firebase),
     NgxErrorsModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    StrokeReliefApp,
     HomePage,
     BluetoothConnectPage,
     SettingsPage,
@@ -60,10 +62,10 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
     BluetoothSerial,
     IonicStorageModule,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SettingsProvider,
-    AngularFireAuth,
     AuthProvider,
-    AngularFirestore,
+    SettingsProvider,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
   ]
 })
 export class AppModule {}

@@ -11,7 +11,7 @@ import { LoginPage } from '../pages/login/login';
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class StrokeReliefApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = LoginPage;
