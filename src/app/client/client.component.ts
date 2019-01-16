@@ -7,6 +7,11 @@ import { User } from '../user';
   templateUrl: './client.component.html',
   styleUrls: ['./client.component.css']
 })
+/*=============================================
+Delete this component and/or rename it to
+ClientList since this name isn't good
+enough
+=============================================*/
 export class ClientComponent implements OnInit {
 
   users: User[];

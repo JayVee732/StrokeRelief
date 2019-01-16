@@ -5,6 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css']
 })
+/*=============================================
+Continue trying to implement this
+=============================================*/
 export class SidenavComponent implements OnInit {
 
   constructor() { }

@@ -7,7 +7,12 @@ import { Form } from '../form';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+/*=============================================
+All of this code will have to be ported to a 
+new component called CreateUser since users
+won't be able to make their own accounts
+=============================================*/
+export class RegisterComponent {
   state: string = '';
   error: any;
   form: Form;
@@ -22,9 +27,6 @@ export class RegisterComponent implements OnInit {
   phoneNumber: string;
 
   constructor(private authService: AuthService) { }
-
-  ngOnInit() {
-  }
 
   onSubmit(formData) {
     // Add interface for form data
@@ -48,8 +50,6 @@ export class RegisterComponent implements OnInit {
         county: this.county,
         phoneNumber: this.phoneNumber
       };
-      console.log(formData.valid);
-      console.log(this.form);
       this.authService.createNewUserWithEmailAndPassword(this.form);
     }
   }

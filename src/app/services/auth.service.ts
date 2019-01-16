@@ -19,21 +19,6 @@ export class AuthService {
     this.currentUser = afa.authState;
   }
 
-  /*createClientLogin(firstName, surname, addressLine1, AddressLine2, county, uid, email, phoneNumber) {
-    this.post = {
-      "FirstName": firstName,
-      "Surname": surname,
-      "AddressLine1": addressLine1,
-      "AddressLine2": AddressLine2,
-      "County": county,
-      "PhoneNumber": phoneNumber,
-      "UserID": uid,
-      "Email": email,
-      "UserRole": "Client"
-    };
-    return this.post;
-  }*/
-
   createNewUserWithEmailAndPassword(form: Form) {
     console.log(form);
     this.afa.auth.createUserWithEmailAndPassword(form.email, form.password)
