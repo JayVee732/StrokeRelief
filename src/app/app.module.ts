@@ -17,6 +17,7 @@ import { ClientComponent } from './client/client.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
+import { ClientlistComponent } from './clientlist/clientlist.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'user', component: UserComponent },
   { path: 'home', component: HomeComponent }, //Needs Authentication
-  { path: 'client', component: ClientComponent },
+  { path: 'client/:id', component: ClientComponent },
+  { path: 'clientlist', component: ClientlistComponent },
 ];
 
 export const firebaseConfig = environment.firebase;
@@ -39,6 +41,7 @@ export const firebaseConfig = environment.firebase;
     TopnavComponent,
     HomeComponent,
     ClientComponent,
+    ClientlistComponent,
   ],
   imports: [
     BrowserModule,

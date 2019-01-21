@@ -1,0 +1,7 @@
+<h2>Client Info</h2>
+
+<ul *ngFor="let user of users">
+  <a [routerLink]="['/client', user.UserID]">
+    {{ user.FirstName }} {{ user.Surname }}
+  </a>
+</ul>

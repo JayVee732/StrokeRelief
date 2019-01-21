@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
@@ -16,14 +15,18 @@ export class StorageService {
   private uid: string = '';
   private userCollection: AngularFirestoreCollection<User>;
   users: Observable<User[]>;
+  user: any;
+  userExerciseCollection: AngularFirestoreCollection;
+  userExercise: any;
+  dateToday: number;
 
-  constructor(private http: HttpClient, private afa: AngularFireAuth, private db: AngularFirestore) {
+  constructor(private afa: AngularFireAuth, private db: AngularFirestore) {
     this.getUID();
   }
 
   //Post new user to the database
   sendPostRequestNewUser(firstName, surname, addressLine1, AddressLine2, county, uid, email, phoneNumber) {
-    this.db.collection('users').add({      
+    this.db.collection('users').add({
       "FirstName": firstName,
       "Surname": surname,
       "AddressLine1": addressLine1,
@@ -38,7 +41,7 @@ export class StorageService {
 
   // Get user information
   getListOfUsers() {
-    this.userCollection = this.db.collection('users');
+    this.userCollection = this.db.collection('users', ref => ref.where('UserRole', '==', 'Client'));
     this.users = this.userCollection.valueChanges();
     return this.users;
   }
@@ -52,5 +55,27 @@ export class StorageService {
         }
       }
     });
+  }
+
+  getUser(id: string) {
+    this.user = this.db.collection('users', ref => ref.where('UserID', '==', id).limit(1)).valueChanges();
+    return this.user;
+  }
+
+  getUserExercise(userID: string) {
+    this.userExerciseCollection = this.db.collection('exercise', ref => ref.where('UserID', '==', userID));
+    this.userExercise = this.userExerciseCollection.valueChanges();
+    return this.userExercise;
+  }
+
+  postNewExercise(exerciseName: string, time: number, userID: string) {
+    this.db.collection('exercise').add({
+      "ExerciseName": exerciseName,
+      "Complete": false,
+      "Time": time,
+      "TimeTaken": 0,
+      "UserID": userID,
+      "Date": Date.now()
+    })
   }
 }
