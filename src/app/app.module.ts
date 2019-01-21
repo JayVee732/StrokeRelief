@@ -24,6 +24,7 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from '../environments/environment';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
+import { StorageProvider } from '../providers/storage/storage';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
     SettingsProvider,
     AngularFirestoreModule,
     AngularFireAuthModule,
+    StorageProvider,
   ]
 })
 export class AppModule {}

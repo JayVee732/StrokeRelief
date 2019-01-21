@@ -14,5 +14,13 @@
 
 
 <ion-content padding>
-  <button ion-button full (click)="sendData()">Send Data</button>
+  <ul *ngFor="let exercise of exercises" let idx=index (click)='sendData(exercise)'>
+    <li>
+        {{ exercise.ExerciseName }}
+    </li>
+    <li>
+        Time: {{ exercise.Time }}
+    </li>
+    <!--<button ion-button #menuItem (click)='sendData(menuItem)'>Update</button>-->
+  </ul>
 </ion-content>

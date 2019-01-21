@@ -15,13 +15,14 @@ export class AuthProvider {
   private user: firebase.User;
 
   constructor(public afAuth: AngularFireAuth) {
-    afAuth.authState.subscribe(user => {
-      this.user = user;
+    afAuth.authState.subscribe(auth => {
+      if (auth) {
+        this.user = auth;
+      }
     });
   }
 
   signInWithEmail(email: string, password: string) {
-    console.log('Sign in with email');
     return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
