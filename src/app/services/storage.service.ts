@@ -73,7 +73,6 @@ export class StorageService {
       "ExerciseName": exerciseName,
       "Complete": false,
       "Time": time,
-      "TimeTaken": 0,
       "UserID": userID,
       "Date": Date.now()
     })

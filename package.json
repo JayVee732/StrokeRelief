@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "^7.2.1",
     "@angular/router": "^7.2.1",
     "bootstrap": "^4.2.1",
-    "core-js": "^2.6.2",
+    "core-js": "^2.6.3",
     "firebase": "^5.8.0",
     "font-awesome": "^4.7.0",
     "rxjs": "^6.3.3",
@@ -45,7 +45,7 @@
     "karma-jasmine": "^2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "protractor": "^5.4.2",
-    "ts-node": "~7.0.0",
+    "ts-node": "^8.0.1",
     "tslint": "^5.12.1",
     "typescript": "^3.2.4"
   }
