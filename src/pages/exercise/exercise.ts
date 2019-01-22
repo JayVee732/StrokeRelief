@@ -30,18 +30,11 @@ export class ExercisePage {
     });
   }
 
-  sendData(menuItem) {
-    
-    console.log(menuItem);
-    // Change this so that it updates rather than adds
-    this.exerciseName = menuItem.ExerciseName;
-    this.db.collection('exercise').add({
-      "ExerciseName": this.exerciseName,
+  sendData(menuItem) {    
+    this.db.doc('exercise/' + menuItem.id).update({
       "Complete": true,
-      "Time": 10,
       "TimeTaken": 23,
-      "UserID": this.userID,
-      "Date": Date.now(),
+      "DateCompleted": Date.now()
     });
   }
 }
