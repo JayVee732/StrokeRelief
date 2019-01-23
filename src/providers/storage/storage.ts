@@ -23,7 +23,7 @@ export class StorageProvider {
   getExercises(userID: string) {
     this.exerciseCollection = this.db.collection('exercise', ref => ref.where('UserID', '==', userID)
       .where('Complete', '==', false));
-      
+
     this.exercises = this.exerciseCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Exercises;
@@ -31,7 +31,6 @@ export class StorageProvider {
         return { id, ...data };
       }))
     );
-
     return this.exercises;
   }
 }

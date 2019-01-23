@@ -2,15 +2,26 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { SettingsPage } from '../settings/settings';
-import { Storage } from '@ionic/storage';
+import { AuthProvider } from '../../providers/auth/auth';
+import { Exercises } from '../../Exercises';
+import { StorageProvider } from '../../providers/storage/storage';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  myDate = new Date(); //Today's Date
+  exercises: Exercises[];
+  userID: string;
 
-  constructor(public navCtrl: NavController, public storage: Storage) {
+  exerciseName: string;
+
+  constructor(public navCtrl: NavController, private storage: StorageProvider, private auth: AuthProvider) {
+    this.userID = this.auth.getUser().uid;
+    this.storage.getExercises(this.userID).subscribe(items => {
+      this.exercises = items
+    });
   }
 
   toggleSettings(item) {
@@ -19,17 +30,9 @@ export class HomePage {
     });
   }
 
-  getName() {
-    this.storage.ready().then(() => {
-      this.storage.get('name').then((name) => {
-        alert("Hey " + name + "!");
-      });
-    })
+  switchTab(){
+    this.navCtrl.parent.select(1);
   }
 
-  setName() {
-    this.storage.ready().then(() => {
-      this.storage.set('name', 'Jamie');
-    })
-  }
+
 }

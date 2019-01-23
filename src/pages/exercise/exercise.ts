@@ -23,9 +23,9 @@ export class ExercisePage {
 
   exerciseName: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthProvider, private db: AngularFirestore, private storageProvider: StorageProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthProvider, private db: AngularFirestore, private storage: StorageProvider) {
     this.userID = this.auth.getUser().uid;
-    this.storageProvider.getExercises(this.userID).subscribe(items => {
+    this.storage.getExercises(this.userID).subscribe(items => {
       this.exercises = items
     });
   }
