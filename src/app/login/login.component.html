@@ -1,11 +1,30 @@
-<h2>Login</h2>
+<h2 class="display-4">Login</h2>
 <span class="error" *ngIf="error" [@fallIn]='state'>{{ error }}</span>
 
-<a routerLink="/register" id="register">Register An Account</a>
+<hr>
 
 <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
-  <input type="text" placeholder="Email Address" (ngModel)="email" name="email" class="txt" required>
-  <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required>
-
-  <button type="submit" [disabled]="!formData.valid" class="basic-btn">Login</button>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="form-group col-md-8">
+      <label for="inputEmail">Email Address</label>
+      <input type="email" class="form-control" id="inputEmail" placeholder="Email Address" (ngModel)="email" name="email"
+        required>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="form-group col-md-8">
+      <label for="inputPassword">Password</label>
+      <input type="password" class="form-control" id="inputPassword" placeholder="Password" (ngModel)="password" name="password"
+        required>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <button type="submit" [disabled]="!formData.valid" class="btn btn-primary col-md-8">Login</button>
+    <div class="col-md-2"></div>
+  </div>
 </form>

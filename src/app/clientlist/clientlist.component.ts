@@ -14,9 +14,8 @@ export class ClientlistComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.storageService.getListOfUsers().subscribe(items =>  {
+    this.storageService.getListOfUsers().subscribe(items => {
       this.users = items;
     });
   }
-
 }

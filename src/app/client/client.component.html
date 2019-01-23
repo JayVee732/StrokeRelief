@@ -1,34 +1,59 @@
-<h2 class="display-4">Client Info</h2>
+<div class="containter">
+    <div class="row">
+        <div class="col-md-5">
+            <h2 class="display-4">Client Info</h2>
+        </div>
+        <form class="form-inline float-right" #formData='ngForm' (ngSubmit)="assignExercise(formData)">
+            <div class="form-group md-2">
+                <input type="text" placeholder="Exercise Name" (ngModel)="exerciseName" name="exerciseName" class="form-control"
+                    required>
+            </div>
+            <div class="form-group md-2">
+                <input type="number" placeholder="Est. Time" (ngModel)="time" name="time" class="form-control" required>
+            </div>
+            <div class="form-group md-3">
+                <button type="submit" class="btn btn-primary">Assign New Exercise</button>
+            </div>
+        </form>
+    </div>
+</div>
 
-<form #formData='ngForm' (ngSubmit)="assignExercise(formData)">
-    
-  <input type="text" placeholder="Exercise Name" (ngModel)="exerciseName" name="exerciseName" class="txt" required>
-  <input type="number" placeholder="Time" (ngModel)="time" name="time" class="txt" required>
-  
-  <button type="submit" class="btn btn-primary">Assign New Exercise</button>
-</form>
-
-<div class="list-group" *ngFor="let user of user">
-    <ul class="list-group-item">
-        Name: {{ user.FirstName }} {{ user.Surname }}
-    </ul>
-    <ul class="list-group-item">
-        Address: {{ user.AddressLine1 }} {{ user.AddressLine2 }}
-    </ul>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-9">
+        <div class="list-group" *ngFor="let user of user">
+            <ul class="list-group-item">
+                Name: {{ user.FirstName }} {{ user.Surname }}
+            </ul>
+            <ul class="list-group-item">
+                Address: {{ user.AddressLine1 }}, <br>
+                {{ user.AddressLine2 }}, <br>
+                {{ user.County }}
+            </ul>
+            <ul class="list-group-item">
+                Phone Number: {{ user.PhoneNumber }}
+            </ul>
+        </div>
+    </div>
 </div>
 
 <h3>Exercises</h3>
 
+
 <ul class="list-group" *ngFor='let userExercise of userExercise'>
     <li class="list-group-item">
-        Exercise Name: {{ userExercise.ExerciseName }},
-        Time Taken: {{ userExercise.TimeTaken }}
+        <div class="col-md-10">
+            Exercise Name: {{ userExercise.ExerciseName }}, <br>
+            Estimated Time: {{ userExercise.Time }}, <br>
+            Time Taken: {{ userExercise.TimeTaken }}, <br>
+            Date Complete: {{ userExercise.DateCompleted | date:"dd/MM/yyyy, HH:mm" }}
+        </div>
+        <div class="col-md-2" *ngIf="userExercise.Complete;else notComplete">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        </div>
     </li>
 </ul>
 
-<ng-template #loading>
-    Loading content...
+<ng-template #notComplete>
+    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 </ng-template>
-
-<div id="modal-container" class="hidden"></div>
-<div id="overlay" (click)="removeModal()" class="hidden"></div>

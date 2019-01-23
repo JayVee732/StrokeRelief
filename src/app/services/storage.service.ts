@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
-import { environment } from '../../environments/environment';
 import { User } from '../user';
 import { Observable } from 'rxjs';
 
@@ -11,18 +10,18 @@ import { Observable } from 'rxjs';
 })
 export class StorageService {
 
-  private firebaseURL: string = environment.firebase.databaseURL;
-  private uid: string = '';
+  public uid: string = '';
+  loggedInUser: any;
+  dateToday: number;
+
   private userCollection: AngularFirestoreCollection<User>;
   users: Observable<User[]>;
   user: any;
+
   userExerciseCollection: AngularFirestoreCollection;
   userExercise: any;
-  dateToday: number;
 
-  constructor(private afa: AngularFireAuth, private db: AngularFirestore) {
-    this.getUID();
-  }
+  constructor(private afa: AngularFireAuth, private db: AngularFirestore) { }
 
   //Post new user to the database
   sendPostRequestNewUser(firstName, surname, addressLine1, AddressLine2, county, uid, email, phoneNumber) {
@@ -46,19 +45,9 @@ export class StorageService {
     return this.users;
   }
 
-  getUID() {
-    this.afa.authState.subscribe((resp) => {
-      if (resp != null) {
-        //As long as it is a vaild user ID
-        if (resp.uid) {
-          this.uid = resp.uid;
-        }
-      }
-    });
-  }
-
   getUser(id: string) {
     this.user = this.db.collection('users', ref => ref.where('UserID', '==', id).limit(1)).valueChanges();
+    console.log(this.user);
     return this.user;
   }
 
