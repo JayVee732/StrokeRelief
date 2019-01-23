@@ -39,6 +39,5 @@ export class ClientComponent implements OnInit {
     this.time = formData.value.time;
     // Create an Exercise ID for all of this
     this.storageService.postNewExercise(this.exerciseName, this.time, this.id);
-    console.log("Complete");
   }
 }

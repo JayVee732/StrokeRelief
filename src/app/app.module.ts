@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from "@angular/fire";
-import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { AngularFirestoreModule, FirestoreSettingsToken } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from '../environments/environment';
 
@@ -18,15 +18,17 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
 import { ClientlistComponent } from './clientlist/clientlist.component';
+import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', component: LoginComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'user', component: UserComponent },
-  { path: 'home', component: HomeComponent }, //Needs Authentication
-  { path: 'client/:id', component: ClientComponent },
-  { path: 'clientlist', component: ClientlistComponent },
+  { path: 'user', component: UserComponent, canActivate: [AuthService] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthService] }, //Needs Authentication
+  { path: 'client/:id', component: ClientComponent, canActivate: [AuthService] },
+  { path: 'clientlist', component: ClientlistComponent, canActivate: [AuthService] },
+  { path: '**', redirectTo: 'login' }
 ];
 
 export const firebaseConfig = environment.firebase;
@@ -52,7 +54,9 @@ export const firebaseConfig = environment.firebase;
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
-  providers: [],
+  providers: [{
+    provide: FirestoreSettingsToken, useValue: {}}, // Currently to avoid error in console, will be removed when Firestore is updated
+    AuthService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
