@@ -15,6 +15,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
+import { BLE } from '@ionic-native/ble/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { SettingsProvider } from '../providers/settings/settings';
 import { AuthProvider } from '../providers/auth/auth';
@@ -68,6 +69,7 @@ import { StorageProvider } from '../providers/storage/storage';
     AngularFirestoreModule,
     AngularFireAuthModule,
     StorageProvider,
+    BLE,
   ]
 })
 export class AppModule {}
