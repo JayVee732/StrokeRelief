@@ -26,6 +26,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from '../environments/environment';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { StorageProvider } from '../providers/storage/storage';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { StorageProvider } from '../providers/storage/storage';
     AngularFireAuthModule,
     StorageProvider,
     BLE,
+    DatePipe,
   ]
 })
 export class AppModule {}
