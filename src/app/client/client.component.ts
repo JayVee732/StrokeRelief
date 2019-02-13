@@ -14,7 +14,7 @@ export class ClientComponent implements OnInit {
   id: string;
   private sub: any;
   user: User;
-  userExercise: Observable<User[]>;
+  userExercise: any;
 
   exerciseName: string;
   time: number;

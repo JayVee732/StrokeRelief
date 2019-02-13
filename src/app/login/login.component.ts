@@ -20,12 +20,12 @@ export class LoginComponent {
     }
   }
 
+  // Log the user in when the Login button is clicked
   onSubmit(formData) {
     if (formData.valid) {
       this.email = formData.value.email;
       this.password = formData.value.password;
       this.auth.loginUserWithEmailAndPassword(this.email, this.password);
-      this.router.navigate(['/home']);
     }
   }
 }
