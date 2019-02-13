@@ -1,0 +1,26 @@
+<!-- Merge this into clientlist.html and make a radio button
+selection so that you can choose between Clients and Doctors -->
+
+<div class="row">
+  <div class="col-md-8">
+    <h2 class="display-4">List of Doctors</h2>
+  </div>
+  <div class="col-md-4">
+    <a class="float-right" routerLink="/doctor-list"><button class="btn btn-success">Create New Doctor</button></a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <ul class="list-group" *ngFor="let doctor of doctors">
+      <div class="list-group-item">
+        <a [routerLink]="['/client', doctor.UserID]">
+          {{ doctor.FirstName }} {{ doctor.Surname }}
+        </a>
+      </div>
+    </ul>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>

@@ -39,8 +39,7 @@ export class AuthService implements CanActivate {
 
   createNewUserWithEmailAndPassword(form: Form) {
     this.afAuth.auth.createUserWithEmailAndPassword(form.email, form.password)
-      .then(
-        (success) => {
+      .then(() => {
           this.afAuth.authState.subscribe((resp) => {
             if (resp != null) {
               if (resp.uid) {
@@ -50,8 +49,7 @@ export class AuthService implements CanActivate {
           })
           this.router.navigate(['/login'])
         })
-      .catch(
-        (err) => {
+      .catch(() => {
           this.router.navigate(['/login'])
         }
       );

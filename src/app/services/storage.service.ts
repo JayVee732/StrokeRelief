@@ -25,28 +25,29 @@ export class StorageService {
 
   //Post new user to the database
   sendPostRequestNewUser(firstName, surname, addressLine1, AddressLine2, county, uid, email, phoneNumber) {
-    this.db.collection('users').add({
+    this.db.collection('users').doc(uid).set({
       "FirstName": firstName,
       "Surname": surname,
       "AddressLine1": addressLine1,
       "AddressLine2": AddressLine2,
       "County": county,
       "PhoneNumber": phoneNumber,
-      "UserID": uid,
       "Email": email,
+      "UserID": uid,
       "UserRole": "Client"
     });
   }
 
   // Get user information
-  getListOfUsers() {
-    this.userCollection = this.db.collection('users', ref => ref.where('UserRole', '==', 'Client'));
+  getListOfUsers(userRole: string) {
+    this.userCollection = this.db.collection('users', ref => ref.where('UserRole', '==', userRole));
     this.users = this.userCollection.valueChanges();
     return this.users;
   }
 
-  getUser(id: string) {
-    this.user = this.db.collection('users', ref => ref.where('UserID', '==', id).limit(1)).valueChanges();
+  getUser(uid: string) {
+    //this.user = this.db.collection('users', ref => ref.where('UserID', '==', id).limit(1)).valueChanges();
+    this.user = this.db.doc('users/' + uid).valueChanges();
     console.log(this.user);
     return this.user;
   }

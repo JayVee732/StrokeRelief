@@ -22,6 +22,7 @@ export class ClientComponent implements OnInit {
   constructor(private storageService: StorageService, private route: ActivatedRoute) {
   }
 
+  // Leads to errors because doesn't load quick enough
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];

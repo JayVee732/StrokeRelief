@@ -19,6 +19,8 @@ import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
 import { ClientlistComponent } from './clientlist/clientlist.component';
 import { AuthService } from './services/auth.service';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { DoctorListComponent } from './doctor-list/doctor-list.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -28,6 +30,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthService] }, //Needs Authentication
   { path: 'client/:id', component: ClientComponent, canActivate: [AuthService] },
   { path: 'clientlist', component: ClientlistComponent, canActivate: [AuthService] },
+  { path: 'admin-dashboard', component: AdminDashboardComponent },
+  { path: 'doctor-list', component: DoctorListComponent },
   { path: '**', redirectTo: 'login' }
 ];
 
@@ -44,6 +48,8 @@ export const firebaseConfig = environment.firebase;
     HomeComponent,
     ClientComponent,
     ClientlistComponent,
+    AdminDashboardComponent,
+    DoctorListComponent,
   ],
   imports: [
     BrowserModule,

@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     // this.storageService.getUser(this.uid).subscribe((user => {
     //   this.user = user;
     // }));
-    this.storageService.getListOfUsers().subscribe(items => {
+    this.storageService.getListOfUsers('Client').subscribe(items => {
       this.users = items;
     });
   }
