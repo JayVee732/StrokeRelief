@@ -8,6 +8,7 @@ import { BluetoothConnectPage } from '../pages/bluetooth-connect/bluetooth-conne
 import { SettingsPage } from '../pages/settings/settings';
 import { HelpPage } from '../pages/help/help';
 import { ExercisePage } from '../pages/exercise/exercise';
+import { ExerciseListPage } from '../pages/exercise-list/exercise-list';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 
@@ -27,6 +28,7 @@ import { environment } from '../environments/environment';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { StorageProvider } from '../providers/storage/storage';
 import { DatePipe } from '@angular/common';
+import { BluetoothDataProvider } from '../providers/bluetooth-data/bluetooth-data';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { DatePipe } from '@angular/common';
     TabsPage,
     HelpPage,
     ExercisePage,
+    ExerciseListPage,
     LoginPage,
   ],
   imports: [
@@ -56,7 +59,7 @@ import { DatePipe } from '@angular/common';
     SettingsPage,
     TabsPage,
     HelpPage,
-    ExercisePage,
+    ExerciseListPage,
     LoginPage,
   ],
   providers: [
@@ -72,6 +75,7 @@ import { DatePipe } from '@angular/common';
     StorageProvider,
     BLE,
     DatePipe,
+    BluetoothDataProvider,
   ]
 })
 export class AppModule {}

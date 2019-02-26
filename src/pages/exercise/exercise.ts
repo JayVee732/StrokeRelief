@@ -1,14 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AuthProvider } from '../../providers/auth/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Exercises } from '../../Exercises';
-import { StorageProvider } from '../../providers/storage/storage';
-
-/**
- * TODO:
- * User feedback to let them know that it has sent data.
- */
+import { IonicPage, NavController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -16,25 +7,5 @@ import { StorageProvider } from '../../providers/storage/storage';
   templateUrl: 'exercise.html',
 })
 export class ExercisePage {
-
-  myDate = new Date(); //Today's Date
-  exercises: Exercises[];
-  userID: string;
-
-  exerciseName: string;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthProvider, private db: AngularFirestore, private storage: StorageProvider) {
-    this.userID = this.auth.getUser().uid;
-    this.storage.getExercises(this.userID).subscribe(items => {
-      this.exercises = items
-    });
-  }
-
-  sendData(menuItem) {    
-    this.db.doc('exercise/' + menuItem.id).update({
-      "Complete": true,
-      "TimeTaken": 23,
-      "DateCompleted": Date.now()
-    });
-  }
+  constructor(public navCtrl: NavController) { }
 }
