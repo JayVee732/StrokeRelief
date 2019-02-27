@@ -8,4 +8,15 @@
 
 
 <ion-content padding>
+  <h2>Current Progress</h2>
+
+  <p>Time: {{ timer }}</p>
+
+  <p>Number of reps remaining: </p>
+  <p>Previous Pull: </p>
+  <p>Number of reps remaining: </p>
+
+  <button ion-button (click)='pauseTimer()'>Pause</button>
+  <button ion-button (click)='startTimer()'>Start / Continue</button>
+  <button ion-button (click)="switchTab()">Next</button>
 </ion-content>

@@ -5,12 +5,6 @@ import { Exercises } from '../../Exercises';
 import { map } from 'rxjs/operators';
 import { DatePipe } from '@angular/common';
 
-/*
-  Generated class for the StorageProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class StorageProvider {
 
@@ -20,7 +14,6 @@ export class StorageProvider {
   dateFormat: string;
 
   constructor(private db: AngularFirestore, private datePipe: DatePipe) {
-    console.log('Hello StorageProvider Provider');
     this.date = Date.now();
     this.dateFormat = this.datePipe.transform(this.date, 'dd/MM/yyyy');
   }

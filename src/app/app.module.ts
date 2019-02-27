@@ -9,6 +9,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { HelpPage } from '../pages/help/help';
 import { ExercisePage } from '../pages/exercise/exercise';
 import { ExerciseListPage } from '../pages/exercise-list/exercise-list';
+import { ExerciseResultsPage } from '../pages/exercise-results/exercise-results';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 
@@ -40,6 +41,7 @@ import { BluetoothDataProvider } from '../providers/bluetooth-data/bluetooth-dat
     HelpPage,
     ExercisePage,
     ExerciseListPage,
+    ExerciseResultsPage,
     LoginPage,
   ],
   imports: [
@@ -59,7 +61,9 @@ import { BluetoothDataProvider } from '../providers/bluetooth-data/bluetooth-dat
     SettingsPage,
     TabsPage,
     HelpPage,
+    ExercisePage,
     ExerciseListPage,
+    ExerciseResultsPage,
     LoginPage,
   ],
   providers: [
