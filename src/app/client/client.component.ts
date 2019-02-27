@@ -18,6 +18,7 @@ export class ClientComponent implements OnInit {
 
   exerciseName: string;
   time: number;
+  numOfReps: number;
 
   constructor(private storageService: StorageService, private route: ActivatedRoute) {
   }
@@ -38,7 +39,8 @@ export class ClientComponent implements OnInit {
   assignExercise(formData) {
     this.exerciseName = formData.value.exerciseName;
     this.time = formData.value.time;
+    this.numOfReps = formData.value.numOfReps;
     // Create an Exercise ID for all of this
-    this.storageService.postNewExercise(this.exerciseName, this.time, this.id);
+    this.storageService.postNewExercise(this.exerciseName, this.time, this.numOfReps, this.id);
   }
 }

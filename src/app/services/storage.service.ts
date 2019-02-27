@@ -58,11 +58,11 @@ export class StorageService {
     return this.userExercise;
   }
 
-  postNewExercise(exerciseName: string, time: number, userID: string) {
+  postNewExercise(exerciseName: string, time: number, numOfReps: number, userID: string) {
     this.db.collection('exercise').add({
       "ExerciseName": exerciseName,
       "Complete": false,
-      "Time": time,
+      "NumOfReps": numOfReps,
       "UserID": userID,
       "Date": Date.now()
     })
