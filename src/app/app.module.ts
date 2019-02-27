@@ -23,7 +23,7 @@ import { SettingsProvider } from '../providers/settings/settings';
 import { AuthProvider } from '../providers/auth/auth';
 
 import { AngularFireModule } from "@angular/fire";
-import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { AngularFirestoreModule, FirestoreSettingsToken } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from '../environments/environment';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
@@ -71,10 +71,11 @@ import { BluetoothDataProvider } from '../providers/bluetooth-data/bluetooth-dat
     SplashScreen,
     BluetoothSerial,
     IonicStorageModule,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthProvider,
     SettingsProvider,
     AngularFirestoreModule,
+    { provide: FirestoreSettingsToken, useValue: {} },
     AngularFireAuthModule,
     StorageProvider,
     BLE,
@@ -82,4 +83,4 @@ import { BluetoothDataProvider } from '../providers/bluetooth-data/bluetooth-dat
     BluetoothDataProvider,
   ]
 })
-export class AppModule {}
+export class AppModule { }

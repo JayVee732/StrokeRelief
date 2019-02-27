@@ -12,11 +12,12 @@
 
   <p>Time: {{ timer }}</p>
 
-  <p>Number of reps remaining: </p>
-  <p>Previous Pull: </p>
-  <p>Number of reps remaining: </p>
+  <p>Number of reps remaining: {{ exercise.NumOfReps }}</p>
+  <p>Previous pull: {{ currentPull }}</p>
+  <p>Number of reps remaining: {{ repsLeft }}</p>
 
   <button ion-button (click)='pauseTimer()'>Pause</button>
   <button ion-button (click)='startTimer()'>Start / Continue</button>
-  <button ion-button (click)="switchTab()">Next</button>
+  <button ion-button (click)="input()">Next Rep</button>
+  <button ion-button (click)="switchTab(exercise)">Next Screen</button>
 </ion-content>

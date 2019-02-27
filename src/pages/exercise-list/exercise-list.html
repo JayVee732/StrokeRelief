@@ -8,13 +8,13 @@
 
 
 <ion-content padding>
-  <ul *ngFor="let exercise of exercises" let idx=index>
+  <ul *ngFor="let exercise of exercises" let idx=index (click)='switchTab(exercise)'>
     <li>
       {{ exercise.ExerciseName }}
     </li>
     <li>
       Time: {{ exercise.Time }}
     </li>
-    <button ion-button #menuItem (click)='switchTab()'>Update</button>
+    <button ion-button #menuItem (click)='switchTab(exercise)'>Update</button>
   </ul>
 </ion-content>

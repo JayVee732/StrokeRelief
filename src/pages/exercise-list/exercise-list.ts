@@ -30,7 +30,10 @@ export class ExerciseListPage {
     });
   }
   
-  switchTab(){
-    this.navCtrl.push(ExercisePage);
+  switchTab(exercise){
+    console.log(exercise);
+    this.navCtrl.push(ExercisePage, {
+      data: exercise 
+    });
   }
 }
