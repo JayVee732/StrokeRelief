@@ -17,6 +17,7 @@ export class ExerciseResultsPage {
     this.exercise = navParams.get('exerciseData');
     this.pullData = navParams.get('pull');
     this.timeTaken = navParams.get('timeTaken');
+    console.log(this.pullData);
   }
 
   saveResults() {

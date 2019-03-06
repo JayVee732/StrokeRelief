@@ -13,6 +13,7 @@ export class ExercisePage {
   currentReps: number = 0;
   exercise: any;
   repsLeft: number = 1;
+  totalReps: number = 1;
   pullData: number[] = [];
 
   timer: number = 0;
@@ -20,7 +21,9 @@ export class ExercisePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private bluetoothData: BluetoothDataProvider) {
     this.exercise = navParams.get('data');
-    this.repsLeft = this.exercise.NumOfReps
+    this.repsLeft = this.exercise.NumOfReps;
+    this.totalReps = this.exercise.NumOfReps;
+    // this.pullData = Array.from({ length: 10 }, (x, i) => 0);
   }
 
   startTimer() {
@@ -28,37 +31,28 @@ export class ExercisePage {
     // over and over again
     this.interval = setInterval(() => {
       this.timer++;
-    }, 1000)
+    }, 1000);
   }
 
   pauseTimer() {
     clearInterval(this.interval);
   }
 
-  switchTab() {
-    // Make sure that currentReps and totalReps can't
-    // be equal to 0, only done here to test naigation
-    if (this.repsLeft == 0) {
-      this.navCtrl.push(ExerciseResultsPage, {
-        exerciseData: this.exercise,
-        pull: this.pullData,
-        // Sort out the timer value here
-        timeTaken: this.timer
-      });
-    }
-  }
-
   input() {
     // Get a data for the pull and clear the data after
     this.currentPull = 0;
     this.currentPull = this.bluetoothData.pull();
-    console.log(this.currentPull);
+    //this.pullData.shift();
     this.pullData.push(this.currentPull);
 
     this.repsLeft--;
 
-    // if (this.repsLeft = 0) {
-    //   this.navCtrl.push(ExerciseResultsPage);
-    // }
+    if (this.repsLeft == 0) {
+      this.navCtrl.push(ExerciseResultsPage, {
+        exerciseData: this.exercise,
+        pull: this.pullData,
+        timeTaken: this.timer
+      });
+    }
   }
 }

@@ -31,7 +31,6 @@ export class ExerciseListPage {
   }
   
   switchTab(exercise){
-    console.log(exercise);
     this.navCtrl.push(ExercisePage, {
       data: exercise 
     });

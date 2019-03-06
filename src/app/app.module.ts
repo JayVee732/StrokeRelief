@@ -21,6 +21,7 @@ import { BLE } from '@ionic-native/ble/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { SettingsProvider } from '../providers/settings/settings';
 import { AuthProvider } from '../providers/auth/auth';
+import { ProgressBarComponent } from '../components/progress-bar/progress-bar'
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule, FirestoreSettingsToken } from "@angular/fire/firestore";
@@ -43,6 +44,7 @@ import { BluetoothDataProvider } from '../providers/bluetooth-data/bluetooth-dat
     ExerciseListPage,
     ExerciseResultsPage,
     LoginPage,
+    ProgressBarComponent,
   ],
   imports: [
     BrowserModule,
