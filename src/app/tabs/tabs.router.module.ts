@@ -30,7 +30,7 @@ const routes: Routes = [
           children: [
             {
               path: '',
-              loadChildren: '../exercise/exercise.module#ExercisePageModule'
+              loadChildren: '../exercise-list/exercise-list.module#ExerciseListPageModule'
             }
           ]
         },
