@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./client.component.css']
 })
 
-export class ClientComponent implements OnInit {
+export class ClientComponent {
   id: string;
   private sub: any;
   user: User;
@@ -21,10 +21,6 @@ export class ClientComponent implements OnInit {
   numOfReps: number;
 
   constructor(private storageService: StorageService, private route: ActivatedRoute) {
-  }
-
-  // Leads to errors because doesn't load quick enough
-  ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
       this.storageService.getUser(this.id).subscribe((user => {

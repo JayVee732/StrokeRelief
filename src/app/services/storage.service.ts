@@ -46,9 +46,7 @@ export class StorageService {
   }
 
   getUser(uid: string) {
-    //this.user = this.db.collection('users', ref => ref.where('UserID', '==', id).limit(1)).valueChanges();
     this.user = this.db.doc('users/' + uid).valueChanges();
-    console.log(this.user);
     return this.user;
   }
 
