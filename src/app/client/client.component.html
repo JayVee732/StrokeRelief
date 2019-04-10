@@ -21,7 +21,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" *ngIf="user">
     <div class="col-md-3"></div>
     <div class="col-md-9">
         <div class="list-group">
@@ -42,10 +42,9 @@
 
 <h3>Exercises</h3>
 
-
 <ul class="list-group" *ngFor='let userExercise of userExercise'>
     <li class="list-group-item">
-        <div class="col-md-10">
+        <div class="col-md-10" [routerLink]="['/exercise-info', userExercise.ID]">
             Exercise Name: {{ userExercise.ExerciseName }}, <br>
             Estimated Time: {{ userExercise.Time }}, <br>
             Time Taken: {{ userExercise.TimeTaken }}, <br>

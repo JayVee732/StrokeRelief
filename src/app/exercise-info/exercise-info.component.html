@@ -1,0 +1,10 @@
+<h2>Exericse Info</h2>
+
+<div class="col-md-10" *ngIf="userExercise">
+  Exercise Name: {{ userExercise.ExerciseName }}, <br>
+  Estimated Time: {{ userExercise.Time }}, <br>
+  Time Taken: {{ userExercise.TimeTaken }}, <br>
+  Date Complete: {{ userExercise.DateCompleted | date:"dd/MM/yyyy, HH:mm" }}
+</div>
+
+<app-bar-chart *ngIf="id" [id]="id"></app-bar-chart>

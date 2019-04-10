@@ -21,6 +21,9 @@ export class StorageService {
   userExerciseCollection: AngularFirestoreCollection;
   userExercise: any;
 
+  exerciseCollection: AngularFirestoreCollection;
+  exercise: any;
+
   constructor(private afa: AngularFireAuth, private db: AngularFirestore) { }
 
   //Post new user to the database
@@ -55,14 +58,31 @@ export class StorageService {
     this.userExercise = this.userExerciseCollection.valueChanges();
     return this.userExercise;
   }
+  
+  getUserExerciseLast7Days(userID: string) {
+    this.userExerciseCollection = this.db.collection('exercise', ref => 
+    ref.where('UserID', '==', userID)
+        .where('Date', '>=', Date.now() - 7 * 24 * 60 * 60 * 1000) // Last 7 days
+        .where('Date', '<=', Date.now()));
+    this.userExercise = this.userExerciseCollection.valueChanges();
+    return this.userExercise;
+  }
 
   postNewExercise(exerciseName: string, time: number, numOfReps: number, userID: string) {
-    this.db.collection('exercise').add({
+    const id = this.db.createId();
+    this.db.collection('exercise').doc(id).set({
       "ExerciseName": exerciseName,
       "Complete": false,
       "NumOfReps": numOfReps,
       "UserID": userID,
-      "Date": Date.now()
+      "Date": Date.now(),
+      "ID": id
     })
   }
+
+  getExerciseInfo(id: string) {
+    this.exercise = this.db.doc('exercise/' + id).valueChanges(); // Change the values to id
+    return this.exercise;
+  }
+
 }
