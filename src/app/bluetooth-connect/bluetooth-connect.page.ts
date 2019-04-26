@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
 import { BLE } from '@ionic-native/ble/ngx';
 
+/**
+ * TODO:
+ * .push() is no longer supported, change the
+ * BLuetooth connection.
+ */
 @Component({
   selector: 'app-bluetooth-connect',
   templateUrl: './bluetooth-connect.page.html',

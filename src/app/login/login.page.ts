@@ -4,6 +4,10 @@ import { LoadingController, AlertController } from '@ionic/angular';
 import { AuthProvider } from '../services/auth/auth.service';
 import { Router } from '@angular/router';
 
+/**
+ * TODO:
+ * Work on adding formgroups and validation for user inputs
+ */
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -16,11 +20,7 @@ export class LoginPage {
   password: string;
   public loading: HTMLIonLoadingElement;
 
-  constructor(
-    public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController,
-    private auth: AuthProvider,
-    public router: Router) {
+  constructor(public loadingCtrl: LoadingController, public alertCtrl: AlertController, private auth: AuthProvider, public router: Router) {
     /*this.loginForm = fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]

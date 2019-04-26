@@ -17,7 +17,7 @@ import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   entryComponents: [
   ],
@@ -39,4 +39,4 @@ import { environment } from '../environments/environment';
     AppComponent
   ]
 })
-export class AppModule {}
+export class AppModule { }

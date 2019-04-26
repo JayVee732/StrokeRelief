@@ -25,19 +25,19 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       // Double check that this will work with Ionic 4
-      // this.auth.afAuth.authState
-      //   .subscribe(
-      //     user => {
-      //       if (user) {
-      //         this.rootPage = TabsPage;
-      //       } else {
-      //         this.rootPage = LoginPage;
-      //       }
-      //     },
-      //     () => {
-      //       this.rootPage = LoginPage;
-      //     }
-      //   );
+      this.auth.afAuth.authState
+        .subscribe(
+          user => {
+            if (user) {
+              this.rootPage = TabsPage;
+            } else {
+              this.rootPage = LoginPage;
+            }
+          },
+          () => {
+            this.rootPage = LoginPage;
+          }
+        );
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });

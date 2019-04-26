@@ -6,12 +6,20 @@ import { Injectable } from '@angular/core';
 export class BluetoothDataService {
 
   currentPull: number
-  min: number = 80;
+  min: number = 70;
   max: number = 100;
+  randomPull: number;
+  holdTime: number;
+  returnObject: any;
   constructor() { }
 
   pull() {
     // Get a value between 80 and 100
-    return Math.floor(Math.random() * (this.max - this.min + 1)) + this.min;
+    this.randomPull = Math.floor(Math.random() * (this.max - this.min + 1)) + this.min;
+    this.holdTime = Math.floor(Math.random() * (1 - 6)) + 5;
+    this.returnObject = {
+      randomPull: this.randomPull, 
+      holdTime: this.holdTime};
+    return this.returnObject;
   }
 }
