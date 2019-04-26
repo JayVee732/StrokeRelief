@@ -11,6 +11,7 @@ import { BLE } from '@ionic-native/ble/ngx';
   selector: 'app-bluetooth-connect',
   templateUrl: './bluetooth-connect.page.html',
   styleUrls: ['./bluetooth-connect.page.scss'],
+  providers: [BLE],
 })
 export class BluetoothConnectPage implements OnInit {
 
@@ -18,7 +19,7 @@ export class BluetoothConnectPage implements OnInit {
   pairedDevices: any;
   gettingDevices: Boolean;
 
-  devices: any[];
+  devices: any[] = [];
   constructor(public navCtrl: NavController, private alertCtrl: AlertController, private ble: BLE) {
     ble.enable();
   }
@@ -29,7 +30,7 @@ export class BluetoothConnectPage implements OnInit {
 
   scan() {
     // If this is enabled, the list is not display, will fix
-    //this.devices = [];
+    this.devices = [];
     this.ble.scan([], 5).subscribe(
       device => this.devices.push(device)
     );
