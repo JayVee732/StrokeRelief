@@ -13,29 +13,29 @@
 </ion-header>
 
 
-<ion-content>
-	<!--<form (ngSubmit)="login()">
-		<ion-list inset>
-			<ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
-			<ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-		</ion-list>
-
-		<div padding-horizontal>
-
-			<button ion-button full type="submit">Log in</button>
-			<div class="login-footer">
-				<p>
-					<a href="#">Forgot password?</a>
-				</p>
-			</div>
-		</div>
-	</form>-->
+<ion-content color="primary" padding>
 	<form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
-		<ion-input type="text" placeholder="Email Address" (ngModel)="email" name="email" class="txt" required></ion-input>
-		<ion-input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required></ion-input>
-
-		<div padding-horizontal>
-			<button ion-button full type="submit">Log in</button>
-		</div>
+		<ion-grid>
+			<ion-row color="primary" justify-content-center>
+				<ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+					<div text-center>
+						<h3>Login</h3>
+					</div>
+					<div padding>
+						<ion-item>
+							<ion-input type="email" placeholder="Email Address" (ngModel)="email" name="email" required>
+							</ion-input>
+						</ion-item>
+						<ion-item>
+							<ion-input type="password" placeholder="Password" (ngModel)="password" name="password"
+								required></ion-input>
+						</ion-item>
+					</div>
+					<div padding>
+						<button ion-button size="large" type="submit" expand="block">Log in</button>
+					</div>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
 	</form>
 </ion-content>
