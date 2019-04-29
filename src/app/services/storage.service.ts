@@ -41,24 +41,27 @@ export class StorageService {
     });
   }
 
-  // Get user information
+  // Get all users by user role
   getListOfUsers(userRole: string) {
     this.userCollection = this.db.collection('users', ref => ref.where('UserRole', '==', userRole));
     this.users = this.userCollection.valueChanges();
     return this.users;
   }
 
+  // Get one user information
   getUser(uid: string) {
     this.user = this.db.doc('users/' + uid).valueChanges();
     return this.user;
   }
 
+  // Get all exercises for a user
   getUserExercise(userID: string) {
     this.userExerciseCollection = this.db.collection('exercise', ref => ref.where('UserID', '==', userID));
     this.userExercise = this.userExerciseCollection.valueChanges();
     return this.userExercise;
   }
   
+  // Get last 7 days worth of exercises for a user
   getUserExerciseLast7Days(userID: string) {
     this.userExerciseCollection = this.db.collection('exercise', ref => 
     ref.where('UserID', '==', userID)
@@ -68,7 +71,8 @@ export class StorageService {
     return this.userExercise;
   }
 
-  postNewExercise(exerciseName: string, time: number, numOfReps: number, userID: string) {
+  // Add new exercise to database
+  postNewExercise(exerciseName: string, numOfReps: number, userID: string) {
     const id = this.db.createId();
     this.db.collection('exercise').doc(id).set({
       "ExerciseName": exerciseName,
@@ -80,6 +84,7 @@ export class StorageService {
     })
   }
 
+  // Get one exercise information
   getExerciseInfo(id: string) {
     this.exercise = this.db.doc('exercise/' + id).valueChanges(); // Change the values to id
     return this.exercise;

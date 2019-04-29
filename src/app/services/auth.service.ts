@@ -26,6 +26,7 @@ export class AuthService implements CanActivate {
     })
   }
   
+  // Check if user can navigate to webpage
   canActivate(): boolean{
     let myItem = sessionStorage.getItem('LoggedIn');
     if (myItem == "Logged") {
@@ -37,6 +38,7 @@ export class AuthService implements CanActivate {
     }
   }
 
+  // Create a new user and add it to the database
   createNewUserWithEmailAndPassword(form: Form) {
     this.afAuth.auth.createUserWithEmailAndPassword(form.email, form.password)
       .then(() => {
@@ -55,6 +57,7 @@ export class AuthService implements CanActivate {
       );
   }
 
+  // Login to web portal
   loginUserWithEmailAndPassword(email: string, password: string) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then(
@@ -69,12 +72,14 @@ export class AuthService implements CanActivate {
       );
   }
 
+  // Log out of web portla
   logOut() {
     sessionStorage.removeItem('LoggedIn');
     this.afAuth.auth.signOut()
     this.router.navigate(['/login']);
   }
 
+  // Check if user is already logged in
   isLoggedIn(): boolean {
     if (this.currentUser == null) {
       return false;

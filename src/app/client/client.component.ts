@@ -34,9 +34,8 @@ export class ClientComponent {
 
   assignExercise(formData) {
     this.exerciseName = formData.value.exerciseName;
-    this.time = formData.value.time;
     this.numOfReps = formData.value.numOfReps;
     // Create an Exercise ID for all of this
-    this.storageService.postNewExercise(this.exerciseName, this.time, this.numOfReps, this.id);
+    this.storageService.postNewExercise(this.exerciseName, this.numOfReps, this.id);
   }
 }

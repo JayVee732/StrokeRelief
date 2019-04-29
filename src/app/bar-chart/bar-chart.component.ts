@@ -42,10 +42,8 @@ export class BarChartComponent implements OnInit {
 
       // I might need this?
       // this.userExercise.forEach(exercise => {
-      //   console.log(exercise)
       //   let sum = exercise.PullData.reduce((previous, current) => current += previous);
       //   let avg = sum / exercise.PullData.length;
-      //   console.log(avg)
       //   this.exerciseAvg.push(avg);
       // });
     }));

@@ -22,7 +22,6 @@ export class ExerciseInfoComponent implements OnInit {
       this.id = params['id'];
       this.storageService.getExerciseInfo(this.id).subscribe((exercise => {
         this.exercise = exercise;
-        console.log(this.exercise);
       }));
     });
   }
