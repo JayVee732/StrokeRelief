@@ -32,7 +32,7 @@ export class BluetoothConnectPage implements OnInit {
     // If this is enabled, the list is not display, will fix
     this.devices = [];
     this.ble.scan([], 5).subscribe(
-      device => this.devices.push(device)
+      device => this.onDeviceDiscovered(device)
     );
   }
 

@@ -20,7 +20,6 @@ export class ExerciseResultsPage {
     this.pullData = data.paramData.pull;
     this.timeTaken = data.paramData.timeTaken;
     this.holdTime = data.paramData.holdTime;
-    console.log(this.pullData);
   }
 
   saveResults() {

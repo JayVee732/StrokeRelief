@@ -27,7 +27,6 @@ export class ExerciseListPage {
 
   constructor(public router: Router, private auth: AuthProvider, private storage: StorageProvider, public data: DataService) {
     this.userID = this.auth.getUser().uid;
-    console.log(this.userID);
     this.storage.getExercises(this.userID).subscribe(items => {
       this.exercises = items
     });

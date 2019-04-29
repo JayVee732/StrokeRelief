@@ -11,14 +11,14 @@
 
 <ion-content padding>
   <ion-list>
+
     <ion-list-header>
       Available Devices
     </ion-list-header>
     <ion-item>
-      <button ion-item *ngFor="let device of devices" (click)="deviceSelected(device)">
-        <h2>{{ device.name || 'Unnamed' }}</h2>
-        <p>{{ device.id }}</p>
-      </button>
+      <ion-button *ngFor="let device of devices" (click)="deviceSelected(device)">
+        <p>{{ device.name || 'Unnamed' }}: {{ device.id }}</p>
+      </ion-button>
     </ion-item>
     <ion-item>
       <ion-spinner name="crescent" *ngIf="gettingDevices"></ion-spinner>
