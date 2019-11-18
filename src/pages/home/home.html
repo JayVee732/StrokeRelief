@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="toggleSettings()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <button ion-button (click)="switchTab()">
+    Go To Bluetooth
+  </button>
+  <ion-list-header>
+    Today's Exercise
+  </ion-list-header>
+</ion-content>
