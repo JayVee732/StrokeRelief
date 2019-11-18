@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleSettings()">
+        <ion-icon name="settings"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-button routerLink="/bluetooth-connect" routerDirection="forward">
+    Go To Bluetooth
+  </ion-button>
+  <ion-list-header>
+    Today's Exercise
+  </ion-list-header>
+</ion-content>

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>List of Exercises</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ul *ngFor="let exercise of exercises" let idx=index>
+    <li>
+      {{ exercise.ExerciseName }}
+    </li>
+    <li>
+      Time: {{ exercise.Time }}
+    </li>
+    <ion-button #menuItem (click)='switchTab(exercise)'>Update</ion-button>
+    <!--<ion-button expand="full" [routerLink]="['/exercise', exercise]" routerDirection="forward">Go To Exericse</ion-button>-->
+  </ul>
+</ion-content>

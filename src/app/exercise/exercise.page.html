@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Exercise</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Current Progress</h2>
+  <p>Time: {{ timer }}</p>
+
+  <!-- Get this progress bar working correctly -->
+  <div *ngFor="let rep of [].constructor(totalReps); let i = index;">
+    <ion-progress-bar></ion-progress-bar>
+  </div>
+  <p>Number of reps remaining: {{ exercise.NumOfReps }}</p>
+  <p>Previous pull: {{ currentPull }}</p>
+  <p>Number of reps remaining: {{ repsLeft }}</p>
+
+  <ion-button (click)='pauseTimer()'>Pause</ion-button>
+  <ion-button (click)='startTimer()'>Start / Continue</ion-button>
+  <ion-button (click)="input()">Next Rep</ion-button>
+</ion-content>

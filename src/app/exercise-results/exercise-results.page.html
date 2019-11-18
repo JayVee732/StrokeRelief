@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Exercise Results</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Add information about the exercise here -->
+<ion-content padding>
+  <p>Exercise Name: {{ exercise.ExerciseName }}</p>
+  <p>Total Number of Reps: {{ exercise.NumOfReps }}</p>
+  <p>Time Taken: {{ timeTaken }}</p>
+
+  <ul *ngFor="let rep of pullData ;let i=index">
+    <li>Pull {{ i + 1 }}: {{ rep }}</li>
+  </ul>
+
+  <ion-button (click)="saveResults()">Save Results</ion-button>
+</ion-content>  
