@@ -1,0 +1,42 @@
+<h2 class="display-4">Dashboard</h2>
+
+<h3 class="text-center">Welcome Back <!--{{ user.FirstName }} {{ user.Surname }}-->!</h3>
+<div class="container">
+  <div class="row text-center">
+      <div class="col-md-4">
+      </div>
+    <div class="col-md-2">
+      <a routerLink="/clientlist"><button class="btn btn-success">Client List</button></a>
+    </div>
+    <div class="col-md-2">
+      <a routerLink="/user"><button class="btn btn-success">Your Profile</button></a>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2 class="display-4 text-center">List of Clients</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+      <ul class="list-group" *ngFor="let user of users">
+        <a class="list-group-item" [routerLink]="['/client', user.UserID]">
+          {{ user.FirstName }} {{ user.Surname }}
+        </a>
+      </ul>
+    </div>
+    <div class="col-md-1">
+    </div>
+  </div>
+</div>

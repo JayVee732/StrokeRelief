@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-8">
+    <h2 class="display-4">List of Clients</h2>
+  </div>
+  <div class="col-md-4">
+    <a class="float-right" routerLink="/register"><button class="btn btn-success">Create New Client</button></a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <ul class="list-group" *ngFor="let user of users">
+      <a class="list-group-item" [routerLink]="['/client', user.UserID]">
+        {{ user.FirstName }} {{ user.Surname }}
+      </a>
+    </ul>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>

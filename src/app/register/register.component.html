@@ -1,0 +1,57 @@
+<div class="form-container">
+  <h2 class="display-4">Create a New Client</h2>
+  <span class="error" *ngIf="error" [@fallIn]='state'>{{ error }}</span>
+</div>
+
+<hr>
+
+<form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail">Email Address</label>
+      <input type="email" class="form-control" id="inputEmail" placeholder="Email Address" (ngModel)="email" name="email"
+        required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword">Password</label>
+      <input type="password" id="inputPassword" placeholder="Password" (ngModel)="password" name="password" class="form-control"
+        required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label for="inputFirstName">First Name</label>
+      <input type="text" id="inputFirstName" placeholder="First Name" (ngModel)="firstName" name="firstName" class="form-control"
+        required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputSurname">Surname</label>
+      <input type="text" id="inputSurname" placeholder="Surname" (ngModel)="surname" name="surname" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label for="inputAddressLine1">Address Line 1</label>
+      <input type="text" id="inputAddressLine1" placeholder="Address Line 1" (ngModel)="addressLine1" name="addressLine1"
+        class="form-control" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputAddressLine2">Address Line 2</label>
+      <input type="text" id="inputAddressLine2" placeholder="Address Line 2" (ngModel)="addressLine2" name="addressLine2"
+        class="form-control" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label for="inputCounty">County</label>
+      <input type="text" id="inputCounty" placeholder="County" (ngModel)="county" name="county" class="form-control"
+        required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPhoneNumber">Phone Number</label>
+      <input type="text" id="inputPhoneNumber" placeholder="Phone Number" (ngModel)="phoneNumber" name="phoneNumber"
+        class="form-control" required>
+    </div>
+  </div>
+  <button type="submit" [disabled]="!formData.valid" class="btn btn-primary">Create New Account</button>
+</form>
